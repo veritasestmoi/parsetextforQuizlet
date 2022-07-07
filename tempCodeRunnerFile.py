@@ -10,23 +10,20 @@ import numpy as np
 from itertools import repeat
 import pprint
 import fileinput
-import timeit
 # import jieba
 
 def main():
-    path = 'huangzhou.md'
+    path = 'lianchi.md'
     file = open(path, "r", encoding='utf-8') #Chinese Characters
     file = file.read()
     file = re.split(r'(?<=\?|\!|\.) (?!(?:[^(|"]*\([^)|"]*\))*[^()]*\))', file) #positive look behind-> matches group before the main expression without including it
     # file = re.split(r'(?<=\?|\!|\.) (?!(?:[^(|"]*\([^)|"]*\))*[^()]*\))', file) #positive look behind-> matches group before the main expression without including it
-    start = timeit.default_timer()
+    
     
     #export data
     with open('new_parse.txt', 'w', encoding='utf-8') as output:
         #file = [x for item in file for x in repeat(item, 5)]
         output.write("\n\n".join(file))
-        stop = timeit.default_timer()
-        print('Time: ', stop - start)
 
 main()
 
